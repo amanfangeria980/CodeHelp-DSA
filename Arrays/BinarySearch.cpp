@@ -4,7 +4,8 @@ using namespace std;
 int BinarySearch(int arr[],int size,int key){
     int start=0;
     int end=size-1;
-    int mid=(start+end)/2;
+    // int mid=(start+end)/2;   //Wrong Approach 
+    int mid = start + (end-start)/2;
     while(start<=end){
         if(key==arr[mid]){
             return mid;
@@ -15,7 +16,10 @@ int BinarySearch(int arr[],int size,int key){
         else{   //move to left side
             end=mid-1;
         }
-        mid=(start+end)/2; //updating mid value
+        // mid=(start+end)/2; //updating mid value
+        mid = start + (end-start)/2;
+
+
     }
     return -1;
 }
