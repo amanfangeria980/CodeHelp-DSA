@@ -8,6 +8,9 @@ class Node{
         this->data=data;
         this->next=NULL;
     }
+    ~Node(){
+        cout<<"Node With Value "<<this->data<<" is Deleted "<<endl;
+    }
 };
 
 void InsertAtHead(Node *&head,int d){
@@ -60,13 +63,14 @@ void InsertAtPos(Node *&head,Node *&tail,int pos,int d){
 
 void DeleteAtPos(Node *&head,int pos){
     if(pos==1){
-        //FOR FIRST
+        //For Deleting Head Node
         Node *temp=head;
         head=head->next;
         delete temp;
         return ;
     }
     else{
+        //For deleting middle or end node.
         Node *curr=head;
         Node *prev=NULL;
         int count=1;
@@ -104,6 +108,7 @@ int main(){
     cout<<tail->data<<endl; //5
     DeleteAtPos(head,1); //4 10 2 5
     DeleteAtPos(head,2); //4 2 5
+    DeleteAtPos(head,3); //4 2
     Print(head);
     return 0;  
 }
