@@ -60,9 +60,23 @@ void InsertAtPos(Node *&head,Node *&tail,int pos,int d){
 
 void DeleteAtPos(Node *&head,int pos){
     if(pos==1){
+        //FOR FIRST
         Node *temp=head;
         head=head->next;
         delete temp;
+        return ;
+    }
+    else{
+        Node *curr=head;
+        Node *prev=NULL;
+        int count=1;
+        while(count<pos){
+            prev=curr;
+            curr=curr->next;
+            count++;
+        }
+        prev->next=curr->next;
+        delete curr;
     }
 }
 int main(){
@@ -89,6 +103,7 @@ int main(){
     cout<<head->data<<endl; //3 
     cout<<tail->data<<endl; //5
     DeleteAtPos(head,1); //4 10 2 5
+    DeleteAtPos(head,2); //4 2 5
     Print(head);
     return 0;  
 }
